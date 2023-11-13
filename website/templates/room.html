@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <h2>Записи о переводах</h2>
+    <table class="table table-striped  table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ID пациента</th>
+            <th scope="col">Номер палаты</th>
+            <th scope="col">Телефон палаты</th>
+            <th scope="col">Поступление</th>
+            <th scope="col">Выписка</th>
+            <th scope="col">Причина выписки</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if rooms %}
+            {% for room in rooms %}
+            <tr>
+               <td><a href="{% url 'one_room' room.id %}" class="btn">{{room.id}}</a></td>
+               <td>{{room.patient}}</td>
+               <td>{{room.room}}</td>
+               <td>{{room.phone_room}}</td>
+               <td>{{room.data_in}}</td>
+               <td>{{room.data_out}} </td>
+               <td>{{room.reason}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            
+            </tbody>
+          </table>
+          <br/>
+          <a href="{%url 'add_room'%}" button type="submit" class="btn btn-secondary">Добавить</a>
+   
+{%endif%}
+{% endblock %}

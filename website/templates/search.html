@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>   Поиск</h2>
+    <style>
+      table, th, td {
+        border: 5px solid rgb(50, 13, 85);
+        padding: 35px;
+        border-spacing: 40px;
+        text-align: left;
+        background-color: rgb(237, 226, 237);
+        }
+      </style>
+    <table style="width:100%">
+            
+    <td>
+    <h3>По имени и фамилии</h3>
+    <form action="{%url 'new1'%}">
+        <textarea name="first_name" placeholder="Имя" rows=1 cols="40"></textarea></br>
+        <textarea name="last_name" placeholder="Фамилия" rows=1 cols="40"></textarea></br>
+        <input class="btn btn-secondary" type="submit" value="Найти">
+    </form>
+    </td>
+    <td >
+    <h3>По дате</h3>
+    <form action="{%url 'new2'%}">
+        <textarea name="data" placeholder="Время поступления" rows=1 cols="40"></textarea></br>
+        <input class="btn btn-secondary" type="submit" value="Найти">
+    </form>
+    </td>
+    <td>
+    <h3>По возрасту и полу</h3>
+    <form action="{%url 'new3'%}">
+        <textarea name="age" placeholder="Возраст" rows=1 cols="40"></textarea></br>
+        <textarea name="male" placeholder="Пол" rows=1 cols="40"></textarea></br>
+        <input class="btn btn-secondary" type="submit" value="Найти">
+    </form>
+    </td>
+   </table>
+
+{% endblock %}

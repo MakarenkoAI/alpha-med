@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Поиск: {{data}}</h2>
+     {% if records %}
+ <h3>Результат:</h3>
+ <table class="table table-striped  table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+                <th scope="col">Пол</th>
+                <th scope="col">ДД.ММ.ГГ</th>
+                <th scope="col">Диагноз</th> 
+                <th scope="col">Приметы</th>
+                <th scope="col">Поступление</th>
+                <th scope="col">Палата</th>
+                <th scope="col">Тел.</th>
+                <th scope="col">Остальное</th>
+            </tr>
+            </thead>
+            <tbody>
+        {% for record in records %}
+                <tr>
+                <td><a href="{% url 'record' record.id %}" class="btn">{{record.id}}</a></td>
+                <td>{{record.first_name}}</td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.father_name}}</td>
+                <td>{{record.male}} </td>
+                <td>{{record.databirth}}</td>
+                <td>{{record.diagnose}}</td>
+                <td>{{record.features}}</td>
+                <td>{{record.data}}</td>
+                <td>{{record.palata}}</td>
+                <td>{{record.phone}}</td>
+                <td>{{record.rest}}</td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+{%else%}
+         <h4>Не найдено</h4>
+{% endif %}
+
+
+   
+{% endblock %}
